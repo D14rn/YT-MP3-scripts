@@ -1,9 +1,10 @@
 if __name__ == "__main__":
     from pytube import Playlist
     import os
+    
     cwd = os.getcwd()
-
     downloadPath = cwd + "/Downloads"
+    
     playlist = Playlist(input("Enter a YouTube playlist: "))
 
     for video in playlist.videos:
