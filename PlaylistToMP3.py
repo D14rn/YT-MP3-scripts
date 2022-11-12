@@ -2,9 +2,10 @@ if __name__ == "__main__":
     from pytube import Playlist
     from moviepy.editor import *
     import os
-    cwd = os.getcwd()
 
+    cwd = os.getcwd()
     downloadPath = cwd + "/Downloads/"
+
     playlist = Playlist(input("Enter a YouTube playlist: "))
 
     for video in playlist.videos:
@@ -14,7 +15,6 @@ if __name__ == "__main__":
                 print(f"Download for {title} failed. File already exists")
             else:
                 out_file = video.streams.get_by_itag(18).download(output_path=downloadPath)
-                #out_file = video.streams.filter(only_audio=True, abr="128kbps").first().download(output_path=downloadPath)
                 print(f"Download for {title} completed successfully.")
                 try:
                     video_part = VideoFileClip(downloadPath + title + ".mp4")
